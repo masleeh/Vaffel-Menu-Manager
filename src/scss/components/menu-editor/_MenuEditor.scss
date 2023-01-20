@@ -1,0 +1,60 @@
+.menu-editor-wrapper {
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    height: 85vh;
+    margin-bottom: 25px;
+}
+
+.editor {
+    width: 928px;
+    height: 100%;
+    background-color: $light;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 360px;
+        align-items: center;
+        margin-bottom: 25px;
+
+        .sort-by {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            color: #000;
+        }
+
+        .filter {
+            width: 80px;
+            height: 20px;
+            border-radius: 25px;
+            background-color: $grey;
+            @include FlexCenter();
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 15px;
+            color: #000;
+        }
+
+        .add-filter {
+            @include FlexCenter();
+            background-color: $yellow1;
+            border-radius: 25px;
+            width: 50px;
+            height: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 30px;
+        }
+    }
+
+    .row2 {
+        display: flex;
+    }
+}

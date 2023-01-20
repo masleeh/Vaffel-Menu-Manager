@@ -1,0 +1,26 @@
+@mixin FlexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Color variables
+
+$yellow1: #FFDE73;
+$light: #F9F6EC;
+$lightred: #EBA9A9;
+$lightgreen: #A9EBB0;
+$yellow2: #FFE688;
+$grey: #D9D9D9;
+
+// Roots
+
+body {
+    background-color: $yellow2;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}

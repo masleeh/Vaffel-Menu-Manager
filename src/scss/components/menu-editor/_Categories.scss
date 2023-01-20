@@ -1,0 +1,26 @@
+.categories {
+    width: 207px;
+    height: 100%;
+    background-color: $light;
+    display: flex;
+    flex-direction: column;
+
+    &-single {
+        width: 210px;
+        height: 30px;
+        background-color: $grey;
+        padding-left: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000;
+        padding-top: 5px;
+        border-top: 1px solid #A0A0A0;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $light;
+        }
+    }
+}
