@@ -17,10 +17,18 @@ $grey: #D9D9D9;
 
 body {
     background-color: $yellow2;
+    
 }
 
 #root {
     display: flex;
     justify-content: center;
     height: 100vh;
+    @include FlexCenter();
 }
+
+// Color classes
+
+.green {background-color: $lightgreen;}
+.red {background-color: $lightred;}
+.yellow {background-color: $yellow1;}

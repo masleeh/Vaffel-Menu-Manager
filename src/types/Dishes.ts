@@ -1,4 +1,4 @@
-export default interface IDishes {
+export interface IDishes {
     id: number,
     name: string,
     description: string,
@@ -10,6 +10,16 @@ export default interface IDishes {
     proteins: number,
     fats: number,
     carbos: number,
-    ingredients: string,
+    ingredient: string,
     image_link: string
+}
+
+export interface ISingleDish {
+    id: number,
+    name: string,
+    ingredient: string,
+    price: number,
+    discountprice: number,
+    weight_big: number,
+    weight_small: number
 }

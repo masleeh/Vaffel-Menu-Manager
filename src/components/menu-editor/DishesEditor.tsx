@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import SingleDish from './SingleDish'
-import IDishes from '../../types/Dishes'
+import {IDishes} from '../../types/Dishes'
 import axios from 'axios'
 
 const DishesEditor:React.FC = () => {
@@ -8,20 +8,29 @@ const DishesEditor:React.FC = () => {
 
     const getAllDishes = async () => {
         const token = localStorage.getItem('vaffel_token')
-        const dishes = await axios.get<IDishes[]>('http://localhost:5000/api/v1/dishes', {
+        const dishess = await axios.get<IDishes[]>('http://localhost:5000/api/v1/dishes', {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
-        setDishes(dishes.data)
+        setDishes(dishess.data)
     }
 
     useEffect(() => {
         getAllDishes()
     }, [])
 
-    const renderedDishes = dishes.map((element, index) => {
-        return <SingleDish />
+    const renderedSingleDishes = dishes.map((element:IDishes, index) => {
+        return (<SingleDish 
+                    key={element.description}
+                    id={element.id}
+                    name={element.name}
+                    ingredient={element.ingredient}
+                    price={element.price}
+                    discountprice={element.discountprice}
+                    weight_big={element.weight_big}
+                    weight_small={element.weight_small}
+                />)
     })
 
     return <div className='editor'>
@@ -32,7 +41,7 @@ const DishesEditor:React.FC = () => {
         </div>
         <div className='row2'>
             <div className='dishes'>
-                {renderedDishes}
+                {renderedSingleDishes}
             </div>
         </div>
     </div>
