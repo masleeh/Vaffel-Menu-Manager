@@ -1,5 +1,5 @@
 import React from 'react'
-import { ICategories } from './Categories'
+import { ICategories } from '../../hooks/API/categoties/useGetCategries'
 
 const SingleCategory:React.FC<ICategories> = ({name}) => {
     const filterName = ():string => {

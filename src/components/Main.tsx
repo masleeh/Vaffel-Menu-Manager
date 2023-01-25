@@ -4,13 +4,14 @@ import HeaderSwitch from "./side-menu/HeaderSwitch";
 import MenuEditor from "./menu-editor/MenuEditor";
 import Seasons from "./seasons/Seasons";
 import Promotions from "./promotions/Promotions";
+import DishesContextProvider from "../context/dishesContext";
 
 
 const Main:React.FC = () => {
     
 
     return (
-        <div>
+        <DishesContextProvider>
             <HeaderSwitch />
             <Routes>
                 <Route path="menu" element={<MenuEditor />}/>
@@ -18,7 +19,7 @@ const Main:React.FC = () => {
                 <Route path="promotions" element={<Promotions />} />
                 <Route path='*' element={<div>Oops! Page not found</div>} />
             </Routes>
-        </div>
+        </DishesContextProvider>
     )
 }
 

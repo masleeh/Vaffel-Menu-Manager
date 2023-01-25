@@ -1,24 +1,11 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { ISingleDish } from '../../types/Dishes'
+import useGetBoxCategories from '../../hooks/API/categoties/useGetBoxesCategories'
 
 
 const SingleDish:React.FC<ISingleDish> = (props) => {
-    const [singleCategories, setSingleCategory] = useState([])
-    
-    const getCategories = async () => {
-        const token = localStorage.getItem('vaffel_token')
-        const categories = await axios.get(`http://localhost:5000/api/v1/categories/${props.id}`, {
-            headers: {
-                Authorization: "Bearer " + token
-            }
-        })
-        setSingleCategory(categories.data)
-    }
-    
-    useEffect( () => {
-        getCategories()
-    },[])
+    const {boxCategories} = useGetBoxCategories(props.id)
     
     const getCatColor = () => {
         if (props.ingredient === "Рыба") {
@@ -30,7 +17,7 @@ const SingleDish:React.FC<ISingleDish> = (props) => {
         return 'dish-ingredient yellow'
     }
 
-    const renderedCategories = singleCategories.slice(0, 2).map(item => {
+    const renderedCategories = boxCategories.slice(0, 2).map(item => {
         return <div className='dish-category' key={item}>{item}</div>
     })
 

@@ -12,7 +12,8 @@ export interface IDishes {
     carbos: number,
     ingredient: string,
     image_link: string,
-    changeDish?: Function
+    changeDish?: Function,
+    isSelected?: boolean
 }
 
 export interface ISingleDish {
@@ -25,4 +26,8 @@ export interface ISingleDish {
     weight_big: number,
     weight_small: number,
     isSelected: boolean
+}
+
+export interface IChildren {
+    children: React.PropsWithChildren
 }

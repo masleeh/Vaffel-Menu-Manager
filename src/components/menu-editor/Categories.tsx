@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import SingleCategory from './SingleCategory'
-import useGetCategories from '../../hooks/API/useGetCategries'
+import useGetCategories from '../../hooks/API/categoties/useGetCategries'
+import { ICategories } from '../../hooks/API/categoties/useGetCategries'
 
-export interface ICategories {
-    name: string
-}
 
 const Categories:React.FC = () => {
     const {categories} = useGetCategories()

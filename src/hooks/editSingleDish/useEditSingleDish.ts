@@ -1,13 +1,16 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import { IDishes } from '../../types/Dishes'
+import { DishesContext } from '../../context/dishesContext'
 
 
 const useEditSingleDish = (dishes:IDishes[]) => {
     const [editSingleDish, setEditSingleDish] = useState<IDishes>()
 
+    const {activeDishId} = useContext(DishesContext)
+
     useEffect(() => {
-        setEditSingleDish(dishes.find(item => item.id === 2))
-    }, [])
+        setEditSingleDish(dishes.find(item => item.id === activeDishId))
+    }, [activeDishId])
 
     const changeDish = (name: string, value:number | string):void => {  
         const newEditDish = {...editSingleDish!, [name]: value}
