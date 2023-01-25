@@ -34,7 +34,7 @@ const SingleDish:React.FC<ISingleDish> = (props) => {
         return <div className='dish-category' key={item}>{item}</div>
     })
 
-    return <div className='dish'>
+    return <div className={props.isSelected ? 'dish grey' : 'dish white'} onClick={() => props.selectDish(props.id)}>
                 <div className="dish-img-cont"></div>
                 
                 <div className='row3'>

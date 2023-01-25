@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import SingleDish from './SingleDish'
 import {IDishes} from '../../types/Dishes'
+import EditSingleDish from './EditSingleDish'
 import axios from 'axios'
 
-const DishesEditor:React.FC = () => {
-    const [dishes, setDishes] = useState<IDishes[]>([])
+interface ISelect {
+    isSelected: boolean,
+    id: number
+}
 
+const DishesEditor:React.FC = () => {
+    const [activeDishes, setActiveDishes] = useState<ISelect[]>([])
+    
+    
+    const [dishes, setDishes] = useState<IDishes[]>([])
     const getAllDishes = async () => {
         const token = localStorage.getItem('vaffel_token')
         const dishess = await axios.get<IDishes[]>('http://localhost:5000/api/v1/dishes', {
@@ -14,14 +22,31 @@ const DishesEditor:React.FC = () => {
             }
         })
         setDishes(dishess.data)
+        setActiveDishes(dishess.data.map((item) => {
+            return {
+                isSelected: false,
+                id: item.id
+            }
+        }))
     }
 
     useEffect(() => {
         getAllDishes()
     }, [])
 
+    const selectDish = (id:number) => {
+        const newActiveDishes = activeDishes.map(item => {
+            if (item.id === id) {
+                return {...item, isSelected: true}
+            }
+            return {...item, isSelected: false}
+        })
+        setActiveDishes(newActiveDishes)
+    }
+
     const renderedSingleDishes = dishes.map((element:IDishes, index) => {
         return (<SingleDish 
+                    selectDish={selectDish}
                     key={element.description}
                     id={element.id}
                     name={element.name}
@@ -30,6 +55,7 @@ const DishesEditor:React.FC = () => {
                     discountprice={element.discountprice}
                     weight_big={element.weight_big}
                     weight_small={element.weight_small}
+                    isSelected={activeDishes[index].isSelected}
                 />)
     })
 
@@ -43,6 +69,9 @@ const DishesEditor:React.FC = () => {
             <div className='dishes'>
                 {renderedSingleDishes}
             </div>
+            <EditSingleDish 
+              dishes={dishes}  
+            />
         </div>
     </div>
 }

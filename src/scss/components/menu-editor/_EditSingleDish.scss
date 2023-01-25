@@ -1,0 +1,124 @@
+.edit {
+    width: 481px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+     
+    &-container1 {
+        display: grid;
+        grid-template-columns: 185px 66px 210px;
+        grid-row-gap: 15px;
+        grid-column-gap: 5px;
+        align-items: center;
+    }
+
+    &-container2 {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 91px 385px;
+        column-gap: 5px;
+        row-gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    &-container3 {
+        display: grid;
+        grid-template-columns: 120px 66px 109px 66px;
+        grid-column-gap: 40px;
+        grid-row-gap: 15px;
+        align-items: center;
+    }
+
+    &-container4 {
+        display: grid;
+        margin-top: 15px;
+        grid-template-columns: 160px 255px;
+        grid-row-gap: 15px;
+        align-items: center;
+    }
+
+    &-container5 {
+        display: flex;
+        justify-content: end;
+        margin-top: 15px;
+    }
+
+    &-label {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &-number {
+        border: 1px solid #000000;
+        border-radius: 10px;
+        width: 66px;
+        height: 25px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &-image-cont {
+        grid-row-start: 1;
+        grid-row-end: 5;
+        grid-column: 3;
+        margin-left: 10px;
+    }
+
+    &-description {
+        border: 1px solid #000000;
+        border-radius: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 385px;
+        min-height: 30px;
+        font-size: 16px;
+        line-height: 20px;
+        resize: none;
+    }
+
+    &-ingredient {
+        width: 179px;
+        height: 25px;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        @include FlexCenter();
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &-upload {
+        width: 120px;
+        height: 25px;
+        background: linear-gradient(274.42deg, #FFD727 6.4%, #FF9400 117.79%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 13px;
+        @include FlexCenter();
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &-button {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        height: 30px;
+        padding-left: 18px;
+        padding-right: 18px;
+        @include FlexCenter();
+        margin-left: 20px;
+
+    }
+
+    #file-upload {
+        display: none;
+    }
+
+    .big {
+        height: 81px;
+    }
+}

@@ -1,27 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import SingleCategory from './SingleCategory'
+import useGetCategories from '../../hooks/API/useGetCategries'
 
 export interface ICategories {
     name: string
 }
 
 const Categories:React.FC = () => {
-    const [categories, setCategories] = useState<ICategories[]>([])
-    
-    const getCategories = async () => {
-        const token = localStorage.getItem('vaffel_token')
-        const allCategories = await axios.get<ICategories[]>('http://localhost:5000/api/v1/categories', {
-            headers: {
-                Authorization: "Bearer " + token
-            }
-        })
-        setCategories(allCategories.data)
-    }
-
-    useEffect(() => {
-        getCategories()
-    }, [])
+    const {categories} = useGetCategories()
 
     const renderedCategories = categories.map((element:ICategories, index) => {
         return <SingleCategory key={element.name} name={element.name}/>

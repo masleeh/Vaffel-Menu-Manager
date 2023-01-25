@@ -4,6 +4,7 @@
     background-color: $light;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     &-single {
         width: 210px;

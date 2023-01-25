@@ -11,15 +11,18 @@ export interface IDishes {
     fats: number,
     carbos: number,
     ingredient: string,
-    image_link: string
+    image_link: string,
+    changeDish?: Function
 }
 
 export interface ISingleDish {
+    selectDish: Function
     id: number,
     name: string,
     ingredient: string,
     price: number,
     discountprice: number,
     weight_big: number,
-    weight_small: number
+    weight_small: number,
+    isSelected: boolean
 }

@@ -122,6 +122,14 @@ body {
   background-color: #FFDE73;
 }
 
+.grey {
+  background-color: #D9D9D9;
+}
+
+.white {
+  background-color: #F9F6EC;
+}
+
 .login {
   width: 509px;
   max-height: 291px;
@@ -276,6 +284,7 @@ body {
   background-color: #F9F6EC;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .categories-single {
   width: 210px;
@@ -306,7 +315,6 @@ body {
   width: 360px;
   height: 129px;
   border-radius: 15px;
-  background-color: #F9F6EC;
   border: 1px solid #D9D9D9;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   margin-left: 20px;
@@ -317,6 +325,7 @@ body {
   flex-direction: row;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  cursor: pointer;
 }
 .dish-img-cont {
   width: 81px;
@@ -379,4 +388,130 @@ body {
 .cat-row {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.edit-image-cont {
+  position: relative;
+}
+.edit-image-cont .edit-picture-dish {
+  position: absolute;
+  top: -25px;
+  left: 15px;
+}
+
+.edit {
+  width: 481px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.edit-container1 {
+  display: grid;
+  grid-template-columns: 185px 66px 210px;
+  grid-row-gap: 15px;
+  grid-column-gap: 5px;
+  align-items: center;
+}
+.edit-container2 {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 91px 385px;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  row-gap: 15px;
+  margin-bottom: 15px;
+}
+.edit-container3 {
+  display: grid;
+  grid-template-columns: 120px 66px 109px 66px;
+  grid-column-gap: 40px;
+  grid-row-gap: 15px;
+  align-items: center;
+}
+.edit-container4 {
+  display: grid;
+  margin-top: 15px;
+  grid-template-columns: 160px 255px;
+  grid-row-gap: 15px;
+  align-items: center;
+}
+.edit-container5 {
+  display: flex;
+  justify-content: end;
+  margin-top: 15px;
+}
+.edit-label {
+  font-size: 16px;
+  line-height: 20px;
+}
+.edit-number {
+  border: 1px solid #000000;
+  border-radius: 10px;
+  width: 66px;
+  height: 25px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+}
+.edit-image-cont {
+  grid-row-start: 1;
+  grid-row-end: 5;
+  grid-column: 3;
+  margin-left: 10px;
+}
+.edit-description {
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 385px;
+  min-height: 30px;
+  font-size: 16px;
+  line-height: 20px;
+  resize: none;
+}
+.edit-ingredient {
+  width: 179px;
+  height: 25px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  line-height: 20px;
+}
+.edit-upload {
+  width: 120px;
+  height: 25px;
+  background: linear-gradient(274.42deg, #FFD727 6.4%, #FF9400 117.79%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  line-height: 20px;
+}
+.edit-button {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  height: 30px;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.edit #file-upload {
+  display: none;
+}
+.edit .big {
+  height: 81px;
 }/*# sourceMappingURL=style.css.map */
