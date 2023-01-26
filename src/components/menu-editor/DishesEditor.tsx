@@ -19,7 +19,7 @@ const DishesEditor:React.FC = () => {
     const renderedSingleDishes = dishes.map((element:IDishes, index) => {
         return (<SingleDish 
                     selectDish={switchActive}
-                    key={element.description}
+                    key={element.id}
                     id={element.id}
                     name={element.name}
                     ingredient={element.ingredient}

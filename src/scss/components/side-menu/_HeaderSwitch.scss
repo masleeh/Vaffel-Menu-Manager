@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-between;
     column-gap: 5px;
-    border-radius: 25px;
     overflow: hidden;
 
     &-button {
@@ -21,9 +20,20 @@
         font-size: 26px;
         color: #000;
         cursor: pointer;
+        border: 1px solid #000000;
+
+        &:last-child {
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        &:first-child {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
     }
 
     .focused {
-        background-color: $grey;
+        background-color: $yellow1;
     }
 }

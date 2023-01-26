@@ -2,7 +2,10 @@ import React, {useState, useEffect} from "react"
 import axios from "axios"
 
 export interface ICategories {
-    name: string
+    name: string,
+    id?: number,
+    isSelected?: boolean,
+    switchActive?: Function
 }
 
 const useGetCategories = () => {
@@ -15,14 +18,18 @@ const useGetCategories = () => {
                 Authorization: "Bearer " + token
             }
         })
-        setCategories(allCategories.data)
+        allCategories.data.unshift({name: 'Все позиции', id: 0})
+        setCategories(allCategories.data.map(item => {
+            if (item.name === "Все позиции") return {...item, isSelected: true}
+            return {...item, isSelected: false}
+        }))
     }
 
     useEffect(() => {
         getCategories()
     }, [])
 
-    return {categories}
+    return {categories, setCategories}
 }
 
 export default useGetCategories

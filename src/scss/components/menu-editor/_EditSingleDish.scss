@@ -39,7 +39,6 @@
         margin-top: 15px;
         grid-template-columns: 160px 255px;
         grid-row-gap: 15px;
-        align-items: center;
     }
 
     &-container5 {
@@ -112,6 +111,34 @@
         @include FlexCenter();
         margin-left: 20px;
 
+    }
+
+    &-category-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 5px;
+    }
+
+    .categ {
+        min-height: 24px;
+        background-color: $yellow1;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        @include FlexCenter();
+        column-gap: 3px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 7px;
+        width: fit-content;
+
+        &-image {
+            cursor: pointer;
+        }
     }
 
     #file-upload {

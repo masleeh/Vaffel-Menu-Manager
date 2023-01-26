@@ -4,6 +4,10 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase"
 import useUploadImage from "../../hooks/editSingleDish/useUploadImage";
 import useEditSingleDish from "../../hooks/editSingleDish/useEditSingleDish";
+import IngredientDropdown from "../ui/dropdown/IngredientDropDown";
+import { isPropertySignature } from "typescript";
+import CategoryElement from "../ui/lists/categotyElement";
+
 
 interface Dishes {
     dishes: IDishes[]
@@ -11,7 +15,7 @@ interface Dishes {
 
 const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
     const {uploadImage, setImageUpload} = useUploadImage()
-    const {editSingleDish, handleChangeDish} = useEditSingleDish(dishes)
+    const {editSingleDish, handleChangeDish, changeDish} = useEditSingleDish(dishes)
 
     return <>{editSingleDish && <div className="edit">
         <div className="edit-container">
@@ -47,12 +51,11 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
             </div>
             <div className="edit-container4">
                 <h1 className="edit-label">Ингредиент:</h1>
-                <div className="edit-ingredient">
-                    Рыба
-                </div>
+                <IngredientDropdown ingredient={editSingleDish!.ingredient} changeDish={changeDish}/>
                 <h1 className="edit-label">Категория:</h1>
                 <div className="edit-category-row">
-                    
+                    <CategoryElement id={editSingleDish!.id}/>
+
                 </div>
                 <h1 className="edit-label">Изображение:</h1>
                 <label htmlFor="file-upload" className="edit-upload">Загрузить

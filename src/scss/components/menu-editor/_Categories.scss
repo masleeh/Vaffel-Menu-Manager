@@ -9,7 +9,6 @@
     &-single {
         width: 210px;
         height: 30px;
-        background-color: $grey;
         padding-left: 10px;
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
@@ -21,7 +20,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: $light;
+            background-color: $yellow1;
         }
     }
 }

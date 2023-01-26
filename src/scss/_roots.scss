@@ -20,7 +20,17 @@ body {
     
 }
 
+.app {
+    width: 100%;
+    height: 100%;
+    @include FlexCenter();
+    flex-direction: column;
+}
+
 #root {
+    background-image: url('../../public/images/Frame\ 2.png');
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     justify-content: center;
     height: 100vh;

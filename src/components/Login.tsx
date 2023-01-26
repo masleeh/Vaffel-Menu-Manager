@@ -9,12 +9,14 @@ const Login:React.FC = () => {
 
 
     return (
-        <div className='login'>
-            <h1 className="login-header">Выполните вход</h1>
-            <input name='login' className="login-input" placeholder="Логин" value={login} onChange={changeLogPass}/>
-            <input name='password' className="login-input" placeholder="Пароль" type='password' value={password} onChange={changeLogPass}/>
-            {isWarnShow && <h1 className="login-incorrect">! Логин или пароль введены некорректно</h1>}
-            <button className="login-check" onClick={sendAuthData}>Войти</button>
+        <div className="login-wrapper">
+            <div className='login'>
+                <h1 className="login-header">Выполните вход</h1>
+                <input name='login' className="login-input" placeholder="Логин" value={login} onChange={changeLogPass}/>
+                <input name='password' className="login-input" placeholder="Пароль" type='password' value={password} onChange={changeLogPass}/>
+                {isWarnShow && <h1 className="login-incorrect">! Логин или пароль введены некорректно</h1>}
+                <button className="login-check" onClick={sendAuthData}>Войти</button>
+            </div>
         </div>
     )
 }

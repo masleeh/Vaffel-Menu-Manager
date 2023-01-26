@@ -1,0 +1,36 @@
+.ingredient {
+    position: relative;
+    cursor: pointer;
+    
+    &-content {
+        position: absolute;
+        z-index: 5;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        width: 179px;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .ingredient-item {
+            width: 179px;
+            height: 25px;
+            @include FlexCenter();
+            background-color: $light;
+
+            &:hover {
+                background-color: $grey;
+            }
+        }
+    }
+
+    &-btn {
+        width: 179px;
+        height: 25px;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        @include FlexCenter();
+    }
+
+}

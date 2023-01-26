@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { ISingleDish } from '../../types/Dishes'
 import useGetBoxCategories from '../../hooks/API/categoties/useGetBoxesCategories'
+import { IBoxCategories } from '../../hooks/API/categoties/useGetBoxesCategories'
 
 
 const SingleDish:React.FC<ISingleDish> = (props) => {
@@ -17,8 +18,13 @@ const SingleDish:React.FC<ISingleDish> = (props) => {
         return 'dish-ingredient yellow'
     }
 
-    const renderedCategories = boxCategories.slice(0, 2).map(item => {
-        return <div className='dish-category' key={item}>{item}</div>
+    const cutString = (name:string) => {
+        if (name.length < 18) return name
+        else return name.slice(0, 18)+ "..."
+    }
+
+    const renderedCategories = boxCategories.slice(0, 2).map((item:IBoxCategories) => {
+        return <div className='dish-category' key={item.name}>{cutString(item.name)}</div>
     })
 
     return <div className={props.isSelected ? 'dish grey' : 'dish white'} onClick={() => props.selectDish(props.id)}>
@@ -28,7 +34,7 @@ const SingleDish:React.FC<ISingleDish> = (props) => {
                     <div>
                         <div className='row4'>
                             <h1 className='dish-header'>{props.name}</h1>
-                            {props.ingredient !== "" && <h1 className={getCatColor()}>{props.ingredient}</h1>}
+                            {props.ingredient !== "" && <h1 className={getCatColor()}>{props.ingredient !== "Не выбрано" && props.ingredient}</h1>}
                         </div>
                         <div className='cat-row'>{renderedCategories}</div>
                     </div>

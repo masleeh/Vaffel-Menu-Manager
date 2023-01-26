@@ -28,7 +28,7 @@ const useEditSingleDish = (dishes:IDishes[]) => {
         changeDish(name, newValue)
     }
 
-    return {editSingleDish, handleChangeDish, }
+    return {editSingleDish, handleChangeDish, changeDish}
 }
 
 export default useEditSingleDish

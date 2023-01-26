@@ -11,7 +11,6 @@ export const DishesContext = createContext<IDishContext>(null!)
 
 const DishesContextProvider:React.FC<React.PropsWithChildren> = ({children}) => {
     const [activeDishId, setActiveDishId] = useState<number>(0)
-    console.log(activeDishId)
 
     const value:IDishContext = {
         activeDishId,

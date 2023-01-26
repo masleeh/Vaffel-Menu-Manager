@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+export interface IBoxCategories {
+    name: string,
+    dishes_id?: number,
+    category_id?: number
+}
+
 const useGetBoxCategories = (id:number) => {
-    const [boxCategories, setSingleCategory] = useState([])
+    
+    const [boxCategories, setSingleCategory] = useState<IBoxCategories[]>([])
     
     const getCategories = async () => {
         const token = localStorage.getItem('vaffel_token')
@@ -16,9 +23,9 @@ const useGetBoxCategories = (id:number) => {
     
     useEffect( () => {
         getCategories()
-    },[])
+    },[id])
 
-    return {boxCategories}
+    return {boxCategories, getCategories}
 }
 
 export default useGetBoxCategories
