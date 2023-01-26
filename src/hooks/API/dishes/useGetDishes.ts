@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import { IDishes } from "../../../types/Dishes"
 import axios from "axios"
+import { DishesContext } from "../../../context/dishesContext"
 
 const useGetDishes = () => {
     const [dishes, setDishes] = useState<IDishes[]>([])
+    // const {activeDishId} = useContext(DishesContext)
+
     const getAllDishes = async () => {
         const token = localStorage.getItem('vaffel_token')
         const dishess = await axios.get<IDishes[]>('http://localhost:5000/api/v1/dishes', {
@@ -11,16 +14,19 @@ const useGetDishes = () => {
                 Authorization: "Bearer " + token
             }
         })
-        setDishes(dishess.data.map(item => {
+        const doneDishes = dishess.data.map(item => {
+            // if (item.id === activeDishId) return {...item, isSelected: true}
             return {...item, isSelected: false}
-        }))
+        })
+        setDishes(doneDishes)
+        return Promise.resolve(doneDishes)
     }
 
     useEffect(() => {
         getAllDishes()
     }, [])
 
-    return {dishes, setDishes}
+    return {dishes, setDishes, getAllDishes}
 }
 
 export default useGetDishes

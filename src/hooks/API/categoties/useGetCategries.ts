@@ -5,7 +5,8 @@ export interface ICategories {
     name: string,
     id?: number,
     isSelected?: boolean,
-    switchActive?: Function
+    switchActive?: Function,
+    filterDishes?: Function
 }
 
 const useGetCategories = () => {

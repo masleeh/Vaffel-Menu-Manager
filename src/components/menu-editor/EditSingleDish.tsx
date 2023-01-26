@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { IDishes } from "../../types/Dishes";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase"
-import useUploadImage from "../../hooks/editSingleDish/useUploadImage";
 import useEditSingleDish from "../../hooks/editSingleDish/useEditSingleDish";
 import IngredientDropdown from "../ui/dropdown/IngredientDropDown";
-import { isPropertySignature } from "typescript";
 import CategoryElement from "../ui/lists/categotyElement";
 
 
@@ -14,8 +10,9 @@ interface Dishes {
 }
 
 const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
-    const {uploadImage, setImageUpload} = useUploadImage()
-    const {editSingleDish, handleChangeDish, changeDish} = useEditSingleDish(dishes)
+    const {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload} = useEditSingleDish(dishes)
+
+    
 
     return <>{editSingleDish && <div className="edit">
         <div className="edit-container">
@@ -23,8 +20,7 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
                 <h1 className="edit-label">Цена, р.:</h1>
                 <input name="price" className="edit-number" value={editSingleDish!.price} onChange={handleChangeDish}/>
                 <div className="edit-image-cont">
-                    <img className="edit-picture" src="images/dish-back.png" />
-                    <img className="edit-picture-dish" src="https://firebasestorage.googleapis.com/v0/b/test-7978c.appspot.com/o/images%2F%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0%20%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B3%D0%B8%D0%B8?alt=media&token=43a8af79-f0e4-4757-b352-130871781c44" />
+                        <img className="edit-picture-dish" src={editSingleDish!.image_link} />
                 </div>
                 <h1 className="edit-label">Цена со скидкой, р.:</h1>
                 <input name="discountprice" className="edit-number" value={editSingleDish!.discountprice} onChange={handleChangeDish}/>
@@ -66,7 +62,7 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
         </div>
         <div className="edit-container5">
             <button className="edit-button red">Удалить</button>
-            <button className="edit-button green" onClick={() => uploadImage(editSingleDish!.name)}>Сохранить</button>
+            <button className="edit-button green" onClick={() => updateDish()}>Сохранить</button>
         </div>
     </div>}</>
 }

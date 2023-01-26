@@ -67,6 +67,13 @@
         grid-row-end: 5;
         grid-column: 3;
         margin-left: 10px;
+        width: 200px;
+        height: 148px;
+        background-image: url('../../public/images/dish-back.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        @include FlexCenter();
     }
 
     &-description {
@@ -119,6 +126,10 @@
         flex-wrap: wrap;
         column-gap: 10px;
         row-gap: 5px;
+    }
+
+    &-image-cont {
+        position: relative;
     }
 
     .categ {

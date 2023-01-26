@@ -28,6 +28,7 @@
         background-image: url('../../public/images/dish-list.png');
         background-repeat: no-repeat;
         background-position: center;
+        @include FlexCenter();
     }
 
     &-header {

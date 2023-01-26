@@ -28,13 +28,15 @@ const SingleDish:React.FC<ISingleDish> = (props) => {
     })
 
     return <div className={props.isSelected ? 'dish grey' : 'dish white'} onClick={() => props.selectDish(props.id)}>
-                <div className="dish-img-cont"></div>
+                <div className="dish-img-cont">
+                    <img className='dish-img' src={props.image_link}/>
+                </div>
                 
                 <div className='row3'>
                     <div>
                         <div className='row4'>
                             <h1 className='dish-header'>{props.name}</h1>
-                            {props.ingredient !== "" && <h1 className={getCatColor()}>{props.ingredient !== "Не выбрано" && props.ingredient}</h1>}
+                            {props.ingredient !== "Не выбрано" && <h1 className={getCatColor()}>{props.ingredient !== "Не выбрано" && props.ingredient}</h1>}
                         </div>
                         <div className='cat-row'>{renderedCategories}</div>
                     </div>

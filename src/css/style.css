@@ -365,6 +365,9 @@ body {
   background-image: url("../../public/images/dish-list.png");
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dish-header {
   font-size: 16px;
@@ -493,6 +496,15 @@ body {
   grid-row-end: 5;
   grid-column: 3;
   margin-left: 10px;
+  width: 200px;
+  height: 148px;
+  background-image: url("../../public/images/dish-back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .edit-description {
   border: 1px solid #000000;
@@ -546,6 +558,9 @@ body {
   -moz-column-gap: 10px;
        column-gap: 10px;
   row-gap: 5px;
+}
+.edit-image-cont {
+  position: relative;
 }
 .edit .categ {
   min-height: 24px;

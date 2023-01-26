@@ -1,12 +1,27 @@
 import {useState, useEffect, useContext} from 'react'
 import { IDishes } from '../../types/Dishes'
-import { DishesContext } from '../../context/dishesContext'
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase"
+import { DishesContext } from '../../context/dishesContext';
+
+import axios from 'axios'
 
 
 const useEditSingleDish = (dishes:IDishes[]) => {
     const [editSingleDish, setEditSingleDish] = useState<IDishes>()
+    const [imageUpload, setImageUpload] = useState<File>()
 
-    const {activeDishId} = useContext(DishesContext)
+    const {getAllDishes} = useContext(DishesContext)
+
+    const uploadImage = async (imageName:string) => {
+        if (imageUpload === undefined) return;
+        const imageRef = ref(storage, `images/${imageName}`)
+        const successUpload = await uploadBytes(imageRef, imageUpload)
+        const url:string = await getDownloadURL(successUpload.ref)
+        return Promise.resolve(url)
+    }
+
+    const {activeDishId, setActiveDishId} = useContext(DishesContext)
 
     useEffect(() => {
         setEditSingleDish(dishes.find(item => item.id === activeDishId))
@@ -28,7 +43,23 @@ const useEditSingleDish = (dishes:IDishes[]) => {
         changeDish(name, newValue)
     }
 
-    return {editSingleDish, handleChangeDish, changeDish}
+    const updateDish = async () => {
+        const token = localStorage.getItem('vaffel_token')
+        const url = await uploadImage(editSingleDish!.name)
+        changeDish("image_link", url!)
+
+        await axios.patch(`http://localhost:5000/api/v1/dishes/${editSingleDish!.id}`, {...editSingleDish, image_link: url}, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+
+        getAllDishes()
+        setActiveDishId(0)
+
+    }
+
+    return {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload}
 }
 
 export default useEditSingleDish

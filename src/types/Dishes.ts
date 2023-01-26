@@ -25,7 +25,8 @@ export interface ISingleDish {
     discountprice: number,
     weight_big: number,
     weight_small: number,
-    isSelected: boolean
+    isSelected: boolean,
+    image_link: string
 }
 
 export interface IChildren {

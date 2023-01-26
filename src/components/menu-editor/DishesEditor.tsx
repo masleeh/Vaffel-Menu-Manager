@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import SingleDish from './SingleDish'
 import {IDishes} from '../../types/Dishes'
 import EditSingleDish from './EditSingleDish'
 import useGetDishes from '../../hooks/API/dishes/useGetDishes'
 import useSwitchActive from '../../hooks/helpers/useSwitchActive'
-import axios from 'axios'
+import { DishesContext } from '../../context/dishesContext'
 
 interface ISelect {
     isSelected: boolean,
@@ -12,7 +12,7 @@ interface ISelect {
 }
 
 const DishesEditor:React.FC = () => {
-    const {dishes, setDishes} = useGetDishes()
+    const {dishes, setDishes} = useContext(DishesContext)
     const {switchActive} = useSwitchActive(dishes, setDishes, true)
 
 
@@ -28,6 +28,7 @@ const DishesEditor:React.FC = () => {
                     weight_big={element.weight_big}
                     weight_small={element.weight_small}
                     isSelected={element.isSelected!}
+                    image_link={element.image_link}
                 />)
     })
 
