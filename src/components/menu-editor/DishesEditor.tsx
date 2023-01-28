@@ -2,9 +2,9 @@ import React, {useState, useEffect, useContext} from 'react'
 import SingleDish from './SingleDish'
 import {IDishes} from '../../types/Dishes'
 import EditSingleDish from './EditSingleDish'
-import useGetDishes from '../../hooks/API/dishes/useGetDishes'
 import useSwitchActive from '../../hooks/helpers/useSwitchActive'
 import { DishesContext } from '../../context/dishesContext'
+import useCreateDish from '../../hooks/API/dishes/useCreateDish'
 
 interface ISelect {
     isSelected: boolean,
@@ -14,6 +14,7 @@ interface ISelect {
 const DishesEditor:React.FC = () => {
     const {dishes, setDishes} = useContext(DishesContext)
     const {switchActive} = useSwitchActive(dishes, setDishes, true)
+    const {createNewDish} = useCreateDish()
 
 
     const renderedSingleDishes = dishes.map((element:IDishes, index) => {
@@ -36,7 +37,7 @@ const DishesEditor:React.FC = () => {
         <div className='row'>
             <h1 className="sort-by">Сортировать по:</h1>
             <div className="filter">Цене</div>
-            <button className='add-filter'>+</button> 
+            <button className='add-filter' onClick={createNewDish}>+</button> 
         </div>
         <div className='row2'>
             <div className='dishes'>

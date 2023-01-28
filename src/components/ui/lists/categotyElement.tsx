@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import useGetBoxCategories from "../../../hooks/API/categoties/useGetBoxesCategories";
 import CategoryDropDown from "../dropdown/CategoryDropdown";
 import useGetCategories from "../../../hooks/API/categoties/useGetCategries";
 import { IBoxCategories } from "../../../hooks/API/categoties/useGetBoxesCategories";
+import { DishesContext } from "../../../context/dishesContext";
 import axios from "axios";
 
 
@@ -15,6 +16,8 @@ interface ICatElem {
 const CategoryElement:React.FC<ICatElem> = (props) => {
     const {boxCategories, getCategories} = useGetBoxCategories(props.id)
     const {categories} = useGetCategories()
+
+    const {getAllDishes} = useContext(DishesContext)
     
     const filteredCategories = categories.filter(item => {
         if (boxCategories.find(element => element.name === item.name)) return false
@@ -32,7 +35,8 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
                 Authorization: "Bearer " + token
             }
         })
-        getCategories()
+        await getCategories()
+        await getAllDishes()
     }
 
     const addCategory = async (item:ICatElem) => {
@@ -46,7 +50,8 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
                 Authorization: "Bearer " + token
             }
         })
-        getCategories()
+        await getCategories()
+        await getAllDishes()
     }
 
     const cutString = (name:string) => {

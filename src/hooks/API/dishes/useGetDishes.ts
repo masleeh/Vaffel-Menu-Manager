@@ -1,11 +1,9 @@
 import React, {useState, useEffect, useContext} from "react"
 import { IDishes } from "../../../types/Dishes"
 import axios from "axios"
-import { DishesContext } from "../../../context/dishesContext"
 
 const useGetDishes = () => {
     const [dishes, setDishes] = useState<IDishes[]>([])
-    // const {activeDishId} = useContext(DishesContext)
 
     const getAllDishes = async () => {
         const token = localStorage.getItem('vaffel_token')

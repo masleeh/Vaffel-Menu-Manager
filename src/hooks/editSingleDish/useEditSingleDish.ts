@@ -14,7 +14,7 @@ const useEditSingleDish = (dishes:IDishes[]) => {
     const {getAllDishes} = useContext(DishesContext)
 
     const uploadImage = async (imageName:string) => {
-        if (imageUpload === undefined) return;
+        if (imageUpload === undefined) return editSingleDish!.image_link
         const imageRef = ref(storage, `images/${imageName}`)
         const successUpload = await uploadBytes(imageRef, imageUpload)
         const url:string = await getDownloadURL(successUpload.ref)

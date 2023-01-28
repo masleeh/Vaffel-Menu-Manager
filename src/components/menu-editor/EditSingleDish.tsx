@@ -3,6 +3,7 @@ import { IDishes } from "../../types/Dishes";
 import useEditSingleDish from "../../hooks/editSingleDish/useEditSingleDish";
 import IngredientDropdown from "../ui/dropdown/IngredientDropDown";
 import CategoryElement from "../ui/lists/categotyElement";
+import useDeleteDish from "../../hooks/API/dishes/useDeleteDish";
 
 
 interface Dishes {
@@ -11,6 +12,7 @@ interface Dishes {
 
 const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
     const {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload} = useEditSingleDish(dishes)
+    const {deleteDish} = useDeleteDish()
 
     
 
@@ -61,7 +63,7 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
             </div>
         </div>
         <div className="edit-container5">
-            <button className="edit-button red">Удалить</button>
+            <button className="edit-button red" onClick={deleteDish}>Удалить</button>
             <button className="edit-button green" onClick={() => updateDish()}>Сохранить</button>
         </div>
     </div>}</>
