@@ -1,9 +1,12 @@
 import React, {useContext} from 'react'
 import axios from 'axios'
 import { DishesContext } from '../../../context/dishesContext'
+import { ActiveDishContext } from '../../../context/activeDishContext'
+import useSwitchActive from '../../helpers/useSwitchActive'
 
 const useCreateDish = () => {
-    const {getAllDishes, setActiveDishId} = useContext(DishesContext)
+    const {getAllDishes, dishes, setDishes} = useContext(DishesContext)
+    const {activeDishId, setActiveDishId} = useContext(ActiveDishContext)
     
     const createNewDish = async () => {
         const token = localStorage.getItem('vaffel_token')
@@ -25,10 +28,8 @@ const useCreateDish = () => {
                 Authorization: "Bearer " + token
             }
         })
-
-        await getAllDishes()
-
-        setActiveDishId(response.data.id)
+        await getAllDishes(response.data.id)
+        await setActiveDishId(response.data.id)
 
     }
     return {createNewDish}

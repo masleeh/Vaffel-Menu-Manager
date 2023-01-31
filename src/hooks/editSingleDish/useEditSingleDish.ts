@@ -3,6 +3,7 @@ import { IDishes } from '../../types/Dishes'
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase"
 import { DishesContext } from '../../context/dishesContext';
+import { ActiveDishContext } from '../../context/activeDishContext';
 
 import axios from 'axios'
 
@@ -10,6 +11,7 @@ import axios from 'axios'
 const useEditSingleDish = (dishes:IDishes[]) => {
     const [editSingleDish, setEditSingleDish] = useState<IDishes>()
     const [imageUpload, setImageUpload] = useState<File>()
+    const {activeDishId} = useContext(ActiveDishContext)
 
     const {getAllDishes} = useContext(DishesContext)
 
@@ -21,10 +23,13 @@ const useEditSingleDish = (dishes:IDishes[]) => {
         return Promise.resolve(url)
     }
 
-    const {activeDishId, setActiveDishId} = useContext(DishesContext)
 
     useEffect(() => {
         setEditSingleDish(dishes.find(item => item.id === activeDishId))
+    }, [activeDishId])
+
+    useEffect(() => {
+        setImageUpload(undefined)
     }, [activeDishId])
 
     const changeDish = (name: string, value:number | string):void => {  
@@ -54,12 +59,13 @@ const useEditSingleDish = (dishes:IDishes[]) => {
             }
         })
 
-        getAllDishes()
-        setActiveDishId(0)
+        setImageUpload(undefined)
+
+        getAllDishes(activeDishId)
 
     }
 
-    return {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload}
+    return {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload, imageUpload}
 }
 
 export default useEditSingleDish

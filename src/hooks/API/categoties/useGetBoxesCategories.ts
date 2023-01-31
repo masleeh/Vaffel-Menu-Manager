@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { DishesContext } from '../../../context/dishesContext'
 import axios from 'axios'
 
 export interface IBoxCategories {
@@ -8,7 +9,7 @@ export interface IBoxCategories {
 }
 
 const useGetBoxCategories = (id:number) => {
-    
+    const {dishes} = useContext(DishesContext)
     const [boxCategories, setSingleCategory] = useState<IBoxCategories[]>([])
     
     const getCategories = async () => {
@@ -23,7 +24,7 @@ const useGetBoxCategories = (id:number) => {
     
     useEffect( () => {
         getCategories()
-    },[id])
+    },[id, dishes])
 
     return {boxCategories, getCategories}
 }

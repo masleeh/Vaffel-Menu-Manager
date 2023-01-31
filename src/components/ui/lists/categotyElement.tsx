@@ -16,8 +16,6 @@ interface ICatElem {
 const CategoryElement:React.FC<ICatElem> = (props) => {
     const {boxCategories, getCategories} = useGetBoxCategories(props.id)
     const {categories} = useGetCategories()
-
-    const {getAllDishes} = useContext(DishesContext)
     
     const filteredCategories = categories.filter(item => {
         if (boxCategories.find(element => element.name === item.name)) return false
@@ -36,7 +34,7 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
             }
         })
         await getCategories()
-        await getAllDishes()
+        
     }
 
     const addCategory = async (item:ICatElem) => {
@@ -51,7 +49,7 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
             }
         })
         await getCategories()
-        await getAllDishes()
+        
     }
 
     const cutString = (name:string) => {

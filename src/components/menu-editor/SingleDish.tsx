@@ -6,7 +6,7 @@ import { IBoxCategories } from '../../hooks/API/categoties/useGetBoxesCategories
 
 
 const SingleDish:React.FC<ISingleDish> = (props) => {
-    const {boxCategories} = useGetBoxCategories(props.id)
+    const {boxCategories, getCategories} = useGetBoxCategories(props.id)
     
     const getCatColor = () => {
         if (props.ingredient === "Рыба") {

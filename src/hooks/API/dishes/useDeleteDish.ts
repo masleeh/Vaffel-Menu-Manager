@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import axios from 'axios'
 import { DishesContext } from '../../../context/dishesContext'
+import { ActiveDishContext } from '../../../context/activeDishContext'
 
 const useDeleteDish = () => {
-    const {getAllDishes, setActiveDishId, activeDishId} = useContext(DishesContext)
+    const {getAllDishes} = useContext(DishesContext)
+    const {activeDishId, setActiveDishId} = useContext(ActiveDishContext)
 
     const deleteDish = async () => {
         const token = localStorage.getItem('vaffel_token')
@@ -15,7 +17,7 @@ const useDeleteDish = () => {
             }
         )
 
-        await getAllDishes()
+        await getAllDishes(activeDishId)
         setActiveDishId(0)
     }
 

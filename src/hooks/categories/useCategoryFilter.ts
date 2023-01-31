@@ -2,6 +2,7 @@ import { DishesContext } from '../../context/dishesContext'
 import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import { IDishes } from '../../types/Dishes'
+import { ActiveDishContext } from '../../context/activeDishContext'
 
 interface DishesCategories {
     dishes_id: number,
@@ -10,10 +11,11 @@ interface DishesCategories {
 }
 
 const useCategoryFilter = () => {
-    const {dishes, getAllDishes, setDishes} = useContext(DishesContext)
+    const {getAllDishes, setDishes} = useContext(DishesContext)
+    const {activeDishId} = useContext(ActiveDishContext)
 
     const filterDishes = async (name:string) => {
-        const allDishes:IDishes[] = await getAllDishes()
+        const allDishes:IDishes[] = await getAllDishes(activeDishId)
 
         if (name === "Все позиции") return
 

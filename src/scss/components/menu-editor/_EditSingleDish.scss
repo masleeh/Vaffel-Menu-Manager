@@ -99,6 +99,12 @@
         line-height: 20px;
     }
 
+    &-picture-dish {
+        max-width: 200px;
+        max-height: 148px;
+        object-fit: cover;
+    }
+
     &-upload {
         width: 120px;
         height: 25px;
@@ -159,5 +165,16 @@
 
     .big {
         height: 81px;
+    }
+
+    &-file-row {
+        display: flex;
+        align-items: center;
+    }
+
+    &-file-name {
+        font-size: 12px;
+        color: red;
+        margin-left: 20px;
     }
 }

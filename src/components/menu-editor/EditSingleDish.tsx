@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IDishes } from "../../types/Dishes";
 import useEditSingleDish from "../../hooks/editSingleDish/useEditSingleDish";
 import IngredientDropdown from "../ui/dropdown/IngredientDropDown";
@@ -11,10 +11,8 @@ interface Dishes {
 }
 
 const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
-    const {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload} = useEditSingleDish(dishes)
+    const {editSingleDish, handleChangeDish, changeDish, updateDish, setImageUpload, imageUpload} = useEditSingleDish(dishes)
     const {deleteDish} = useDeleteDish()
-
-    
 
     return <>{editSingleDish && <div className="edit">
         <div className="edit-container">
@@ -56,10 +54,14 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
 
                 </div>
                 <h1 className="edit-label">Изображение:</h1>
-                <label htmlFor="file-upload" className="edit-upload">Загрузить
-                <input id="file-upload"  type="file"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setImageUpload(event.target.files![0])}
-                    }/></label>
+                <div className="edit-file-row">
+                    <label htmlFor="file-upload" className="edit-upload">Загрузить
+                    <input id="file-upload"  type="file"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setImageUpload(event.target.files![0])}
+                        }/></label>
+                    {imageUpload && <h1 className="edit-file-name">{imageUpload.name}</h1>}
+                    {imageUpload && <></>}
+                </div>
             </div>
         </div>
         <div className="edit-container5">
