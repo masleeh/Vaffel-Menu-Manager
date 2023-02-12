@@ -30,7 +30,7 @@ const useGetCategories = () => {
         getCategories()
     }, [])
 
-    return {categories, setCategories}
+    return {categories, setCategories, getCategories}
 }
 
 export default useGetCategories

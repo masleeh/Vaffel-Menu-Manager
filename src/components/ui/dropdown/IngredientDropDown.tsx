@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import useDisableSelect from '../../../hooks/helpers/useDisableSelect'
 
 interface Ingredient {
     ingredient: string,
@@ -7,9 +8,10 @@ interface Ingredient {
 
 const IngredientDropdown:React.FC<Ingredient> = (props) => {
     const [isShown, setIsShown] = useState(false)
+    const {selectRef} = useDisableSelect(isShown, setIsShown)
 
 
-    return <div className='ingredient'>
+    return <div className='ingredient' ref={selectRef}>
         <div className='ingredient-btn' onClick={() => setIsShown(!isShown)}>{props.ingredient}</div>
         {isShown && <div className='ingredient-content'>
             <div className='ingredient-item' onClick={() => {

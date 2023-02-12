@@ -30,6 +30,9 @@ const useCreateDish = () => {
         })
         await getAllDishes(response.data.id)
         await setActiveDishId(response.data.id)
+        
+        const  element = document.querySelector('.dishes')
+        setTimeout(() => element?.scrollTo(0, element.scrollHeight + 400), 100)
 
     }
     return {createNewDish}
