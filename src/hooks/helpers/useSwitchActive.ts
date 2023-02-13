@@ -17,7 +17,7 @@ const useSwitchActive = (array: any[], setArray: Function, isContext: boolean) =
         setArray(array.map(item => {
             if (id === item.id) {
                 if (isContext) setActiveDishId(id)
-                if (isContext)  
+                // if (isContext)  
                 return {...item, isSelected: true}
             }
             return {...item, isSelected: false}

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext} from 'react'
 import SingleCategory from './SingleCategory'
 import useGetCategories from '../../hooks/API/categoties/useGetCategries'
 import { ICategories } from '../../hooks/API/categoties/useGetCategries'
@@ -6,11 +6,12 @@ import useSwitchActive from '../../hooks/helpers/useSwitchActive'
 import useCategoryFilter from '../../hooks/categories/useCategoryFilter'
 import useCreateCategory from '../../hooks/API/categoties/useCreateCategory'
 import useDisableSelect from '../../hooks/helpers/useDisableSelect'
+import { DishesContext } from '../../context/dishesContext'
 
 
 
 const Categories:React.FC = () => {
-    const {categories, setCategories, getCategories} = useGetCategories()
+    const {categories, setCategories, getCategories} = useContext(DishesContext)
     const {switchActive} = useSwitchActive(categories, setCategories, false)
 
     const {filterDishes} = useCategoryFilter()
@@ -21,10 +22,15 @@ const Categories:React.FC = () => {
 
 
     const renderedCategories = categories.map((element:ICategories, index) => {
-        return <SingleCategory filterDishes={filterDishes} key={element.name} name={element.name} switchActive={switchActive} isSelected={element.isSelected} id={element.id}/>
+        return <SingleCategory
+            filterDishes={filterDishes} 
+            key={element.name} 
+            name={element.name} 
+            switchActive={switchActive} 
+            isSelected={element.isSelected} 
+            id={element.id}
+            getCategories={getCategories}/>
     })
-
-    console.log(showCatInput)
 
     return <div className='categories'>
         {renderedCategories}

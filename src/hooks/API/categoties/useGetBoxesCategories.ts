@@ -12,7 +12,7 @@ const useGetBoxCategories = (id:number) => {
     const {dishes} = useContext(DishesContext)
     const [boxCategories, setSingleCategory] = useState<IBoxCategories[]>([])
     
-    const getCategories = async () => {
+    const getBoxCategories = async () => {
         const token = localStorage.getItem('vaffel_token')
         const categories = await axios.get(`http://localhost:5000/api/v1/categories/${id}`, {
             headers: {
@@ -23,10 +23,10 @@ const useGetBoxCategories = (id:number) => {
     }
     
     useEffect( () => {
-        getCategories()
+        getBoxCategories()
     },[id, dishes])
 
-    return {boxCategories, getCategories}
+    return {boxCategories, getBoxCategories}
 }
 
 export default useGetBoxCategories

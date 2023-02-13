@@ -331,12 +331,24 @@ body {
   font-size: 16px;
   line-height: 16px;
   color: #000;
-  padding-top: 5px;
   border-top: 1px solid #A0A0A0;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
 }
 .categories-single:hover {
   background-color: #FFDE73;
+}
+.categories-single-delete {
+  background: url("../../public/images/x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
 }
 .categories-add {
   width: 210px;

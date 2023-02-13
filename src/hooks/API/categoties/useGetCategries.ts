@@ -6,7 +6,8 @@ export interface ICategories {
     id?: number,
     isSelected?: boolean,
     switchActive?: Function,
-    filterDishes?: Function
+    filterDishes?: Function,
+    getCategories?: Function
 }
 
 const useGetCategories = () => {
@@ -19,9 +20,12 @@ const useGetCategories = () => {
                 Authorization: "Bearer " + token
             }
         })
-        allCategories.data.unshift({name: 'Все позиции', id: 0})
+        
+        if (allCategories.data[0].name !== 'Все позиции') {
+            allCategories.data.unshift({name: 'Все позиции', id: 0, isSelected: true})
+        }
         setCategories(allCategories.data.map(item => {
-            if (item.name === "Все позиции") return {...item, isSelected: true}
+            if (item.name === "Все позиции") return {...item}
             return {...item, isSelected: false}
         }))
     }

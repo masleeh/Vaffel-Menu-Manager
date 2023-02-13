@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { ICategories } from '../../hooks/API/categoties/useGetCategries'
+import useShowIcon from '../../hooks/helpers/useShowIcon'
+import useDeleteCategory from '../../hooks/categories/useDeleteCategory'
+import { DishesContext } from '../../context/dishesContext'
 
-const SingleCategory:React.FC<ICategories> = ({name, isSelected, switchActive, id, filterDishes}) => {
+const SingleCategory:React.FC<ICategories> = ({name, isSelected, switchActive, id, filterDishes, getCategories}) => {
+
+    const {isShowIcon, mouseOut, mouseOver} = useShowIcon()
+    const {deleteCategory} = useDeleteCategory()
+    const {getAllDishes} = useContext(DishesContext)
+
     const filterName = ():string => {
-        if (name.length > 18) {
-            return name.slice(0, 17) + '...'
+        if (name.length > 17) {
+            return name.slice(0, 16) + '...'
         }
         else return name
     }
@@ -12,8 +20,18 @@ const SingleCategory:React.FC<ICategories> = ({name, isSelected, switchActive, i
     return <div className={isSelected ? 'categories-single yellow' : 'categories-single'} onClick={() => {
         switchActive!(id)
         filterDishes!(name)
-        }}>
+        }}
+        onMouseOver={mouseOver}
+        onMouseOut={mouseOut}
+        >
         {filterName()}
+
+        {id !==0 && (isShowIcon && <button className='categories-single-delete' onClick={(event) => {
+            event.stopPropagation()
+            deleteCategory(id!)
+            getAllDishes()
+            getCategories!()
+        }}></button>)}
     </div>
 }
 

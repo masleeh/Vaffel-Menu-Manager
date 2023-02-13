@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import useGetBoxCategories from "../../../hooks/API/categoties/useGetBoxesCategories";
 import CategoryDropDown from "../dropdown/CategoryDropdown";
-import useGetCategories from "../../../hooks/API/categoties/useGetCategries";
+import useGetCategories, { ICategories } from "../../../hooks/API/categoties/useGetCategries";
 import { IBoxCategories } from "../../../hooks/API/categoties/useGetBoxesCategories";
 import { DishesContext } from "../../../context/dishesContext";
 import axios from "axios";
@@ -14,13 +14,17 @@ interface ICatElem {
 }
 
 const CategoryElement:React.FC<ICatElem> = (props) => {
-    const {boxCategories, getCategories} = useGetBoxCategories(props.id)
-    const {categories} = useGetCategories()
+    const {categories} = useContext(DishesContext)
+    const {boxCategories, getBoxCategories} = useGetBoxCategories(props.id)
+    // const {categories, getCategories} = useGetCategories()
+
     
     const filteredCategories = categories.filter(item => {
         if (boxCategories.find(element => element.name === item.name)) return false
         return true
     })
+
+
 
     const deleteCategory = async (item:IBoxCategories) => {
         const token = localStorage.getItem('vaffel_token')
@@ -33,7 +37,7 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
                 Authorization: "Bearer " + token
             }
         })
-        await getCategories()
+        await getBoxCategories()
         
     }
 
@@ -48,7 +52,7 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
                 Authorization: "Bearer " + token
             }
         })
-        await getCategories()
+        await getBoxCategories()
         
     }
 
@@ -66,7 +70,7 @@ const CategoryElement:React.FC<ICatElem> = (props) => {
 
     return (<>
     {renderedCategories}
-    {categories && <CategoryDropDown filteredCategories={filteredCategories} addCategory={addCategory}/>}
+    {categories && <CategoryDropDown filteredCategories={filteredCategories!} addCategory={addCategory}/>}
     </>)
 }
 
