@@ -47,7 +47,7 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
             </div>
             <div className="edit-container4">
                 <h1 className="edit-label">Ингредиент:</h1>
-                <IngredientDropdown ingredient={editSingleDish!.ingredient} changeDish={changeDish}/>
+                    <IngredientDropdown ingredient={editSingleDish!.ingredient} changeDish={changeDish}/>
                 <h1 className="edit-label">Категория:</h1>
                 <div className="edit-category-row">
                     <CategoryElement id={editSingleDish!.id}/>
@@ -60,7 +60,7 @@ const EditSingleDish:React.FC<Dishes> = ({dishes}) => {
                         setImageUpload(event.target.files![0])}
                         }/></label>
                     {imageUpload && <h1 className="edit-file-name">{imageUpload.name}</h1>}
-                    {imageUpload && <></>}
+                    {imageUpload && <div className="edit-file-delete" onClick={() => setImageUpload(undefined)}></div>}
                 </div>
             </div>
         </div>

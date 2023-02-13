@@ -26,9 +26,9 @@ const SingleCategory:React.FC<ICategories> = ({name, isSelected, switchActive, i
         >
         {filterName()}
 
-        {id !==0 && (isShowIcon && <button className='categories-single-delete' onClick={(event) => {
+        {id !==0 && (isShowIcon && <button className='categories-single-delete' onClick={async (event) => {
             event.stopPropagation()
-            deleteCategory(id!)
+            await deleteCategory(id!)
             getAllDishes()
             getCategories!()
         }}></button>)}

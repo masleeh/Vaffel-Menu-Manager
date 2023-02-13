@@ -12,7 +12,7 @@ const IngredientDropdown:React.FC<Ingredient> = (props) => {
 
 
     return <div className='ingredient' ref={selectRef}>
-        <div className='ingredient-btn' onClick={() => setIsShown(!isShown)}>{props.ingredient}</div>
+        <div className='ingredient-btn' onClick={() => setIsShown(!isShown)}>{props.ingredient}<div className={isShown ? 'ingredient-dropdown rotate' : "ingredient-dropdown"}></div></div>
         {isShown && <div className='ingredient-content'>
             <div className='ingredient-item' onClick={() => {
                     props.changeDish('ingredient', 'Не выбрано')

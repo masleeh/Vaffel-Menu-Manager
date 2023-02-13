@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import SingleCategory from './SingleCategory'
-import useGetCategories from '../../hooks/API/categoties/useGetCategries'
+import useKeyEnter from '../../hooks/helpers/useKeyEnter'
 import { ICategories } from '../../hooks/API/categoties/useGetCategries'
 import useSwitchActive from '../../hooks/helpers/useSwitchActive'
 import useCategoryFilter from '../../hooks/categories/useCategoryFilter'
@@ -19,6 +19,10 @@ const Categories:React.FC = () => {
     const {showCatInput, toggleCatInput, catValue, setShowCatInput, handleCatInputChange, createCategory} = useCreateCategory()
     const {selectRef} = useDisableSelect(showCatInput, setShowCatInput)
 
+    const {handleKey} = useKeyEnter(async () => {
+        await createCategory(catValue!)
+        getCategories()
+    })
 
 
     const renderedCategories = categories.map((element:ICategories, index) => {
@@ -37,9 +41,9 @@ const Categories:React.FC = () => {
         <div className="categories-add" ref={selectRef}>
             <button className={!showCatInput ? 'categories-button' : 'hide'}  onClick={toggleCatInput}>+</button>
             {showCatInput && <div className='categories-row'>
-                                <input className='categories-input' placeholder='Новая категория' value={catValue} onChange={handleCatInputChange}/>
-                                <div className='categories-image' onClick={() => {
-                                    createCategory(catValue!)
+                                <input className='categories-input' onKeyDown={handleKey} placeholder='Новая категория' value={catValue} onChange={handleCatInputChange}/>
+                                <div className='categories-image' onClick={async () => {
+                                    await createCategory(catValue!)
                                     getCategories()
                                 }}></div>
                             </div>}

@@ -177,4 +177,12 @@
         color: red;
         margin-left: 20px;
     }
+
+    &-file-delete {
+        width: 10px;
+        height: 10px;
+        background: url('../../public/images/x.png') no-repeat center;
+        cursor: pointer;
+        margin-left: 5px;
+    }
 }

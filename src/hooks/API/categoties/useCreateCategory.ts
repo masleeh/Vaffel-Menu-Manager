@@ -26,6 +26,7 @@ const useCreateCategory = () => {
         })
         setShowCatInput(false)
         setCatValue('')
+        return Promise.resolve(response)
     }
 
     return {showCatInput, setShowCatInput, toggleCatInput, createCategory, catValue, handleCatInputChange}

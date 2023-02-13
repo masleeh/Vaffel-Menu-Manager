@@ -1,6 +1,18 @@
 .ingredient {
     position: relative;
     cursor: pointer;
+
+    &-dropdown {
+        width: 8px;
+        height: 8px;
+        transition: all 0.3s ease 0s;
+        background: url('../../public/images/dropdown.svg') no-repeat center;
+        margin-left: 5px;
+    }
+
+    .rotate {
+        transform: rotate(180deg)
+    }
     
     &-content {
         position: absolute;
@@ -31,6 +43,7 @@
         border: 1px solid #000000;
         border-radius: 10px;
         @include FlexCenter();
+        align-items: center;
     }
 
 }
