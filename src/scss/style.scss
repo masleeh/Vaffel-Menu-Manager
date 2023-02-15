@@ -6,10 +6,11 @@
 @import './components/menu-editor/Categories';
 @import './components/menu-editor/DishesList';
 @import './components/menu-editor/EditSingleDish';
+@import './components/promotions/promotions';
+@import './components/seasons/seasons';
 
 
 // UI
 
 @import './UI/dropdown/Ingredient.scss';
 @import './UI/dropdown/Category';
-@import './components/promotions/promotions';

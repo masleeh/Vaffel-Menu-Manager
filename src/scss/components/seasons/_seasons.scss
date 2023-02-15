@@ -1,0 +1,129 @@
+.season-wrapper {
+    width: 1140px;
+    height: 85vh;
+    margin-bottom: 25px;
+    background-color: $light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.season-row {
+    margin-top: 20px;
+    width: 607px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.season-warning {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.season-add-button {
+    width: 150px;
+    height: 25px;
+    border-radius: 25px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.season-inner-block {
+    width: 100%;
+    overflow-y: scroll;
+    padding-left: 15px;
+
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb{
+        display: block;
+        width: 6px;
+        height: 10px;
+        border-radius: 50px;
+        background-color: $grey;
+    }
+    
+    &::-webkit-scrollbar-track {
+        opacity: 0;
+    }
+}
+
+.season {
+    width: 607px;
+    height: 333px;
+    border: 1px solid $grey;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-bottom: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 20px;
+
+    &-image {
+        width: 523px;
+        height: 243px;
+        display: block;
+    }
+
+    &-item-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-upload {
+        width: 120px;
+        height: 25px;
+        background: linear-gradient(274.42deg, #FFD727 6.4%, #FF9400 117.79%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 13px;
+        @include FlexCenter();
+        font-size: 16px;
+        line-height: 20px;
+        font-family: 'Montserrat';
+        font-style: normal;
+    }
+
+    &-button {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        height: 30px;
+        padding-left: 18px;
+        padding-right: 18px;
+        @include FlexCenter();
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        font-family: 'Montserrat';
+        font-style: normal;
+    }
+
+    &-image-cont {
+        display: block;
+        background-color: $grey;
+        margin-bottom: 20px;
+
+    }
+}
+
+.season-edit-row {
+    display: flex;
+    align-items: center;
+}

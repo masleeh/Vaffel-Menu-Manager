@@ -23,7 +23,7 @@ const Promotions:React.FC = () => {
         <div className='promotions-wrapper'>
             <div className="promotion-row">
                 <h1 className="promotion-warning">Максимальное количество акций: 6 шт.</h1>
-                <button className="promotion-add-button" onClick={addPromotion}>Добавить акцию</button>
+                <button className={promotions.length >= 6 ? "promotion-add-button grey" : "promotion-add-button yellow"} onClick={addPromotion} disabled={promotions.length >= 6 ? true : false}>Добавить акцию</button>
             </div>
         <div className='promotion-inner-block'>
             {renderedPromotions}

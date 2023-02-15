@@ -30,13 +30,13 @@ const SinglePromotion:React.FC<IPromotion> = (props) => {
             <textarea name="description" className="promotion-textarea" value={promotion.description} onChange={handleChange}/>
             <div className="promotion-label">Изображение:</div>
             <div className="edit-file-row">
-                    <label htmlFor="file-upload2" className="promotion-upload">Загрузить
-                    <input id="file-upload2"  type="file"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    <label htmlFor={`file-upload${promotion.id}`} className="promotion-upload">Загрузить
+                    <input id={`file-upload${promotion.id}`} className="file-upload2"  type="file"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         setImageUpload(event.target.files![0])}
                         }/></label>
                     {imageUpload && <h1 className="promotion-file-name">{imageUpload.name}</h1>}
                     {imageUpload && <div className="edit-file-delete" onClick={() => setImageUpload(undefined)}></div>}
-                </div>
+            </div>
             {/* <button className="promotion-upload">Загрузить</button> */}
             <div className="row">
                 <button className="promotion-button yellow" onClick={resetPromotion}>Отменить</button>
