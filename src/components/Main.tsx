@@ -6,11 +6,13 @@ import Seasons from "./seasons/Seasons";
 import Promotions from "./promotions/Promotions";
 import DishesContextProvider from "../context/dishesContext";
 import ActiveDishContextProvider from "../context/activeDishContext";
+import PromotionsContextProvider from "../context/promotionsContext";
 
 
 const Main:React.FC = () => {
 
     return (
+        <PromotionsContextProvider>
         <ActiveDishContextProvider >   
             <DishesContextProvider>
                 <HeaderSwitch />
@@ -25,6 +27,7 @@ const Main:React.FC = () => {
                 </Routes>
             </DishesContextProvider>
         </ActiveDishContextProvider>
+        </PromotionsContextProvider>
     )
 }
 

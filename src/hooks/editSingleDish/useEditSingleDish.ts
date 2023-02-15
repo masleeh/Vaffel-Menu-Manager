@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext} from 'react'
 import { IDishes } from '../../types/Dishes'
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase"
 import { DishesContext } from '../../context/dishesContext';
 import { ActiveDishContext } from '../../context/activeDishContext';
@@ -26,11 +26,9 @@ const useEditSingleDish = (dishes:IDishes[]) => {
 
     useEffect(() => {
         setEditSingleDish(dishes.find(item => item.id === activeDishId))
-    }, [activeDishId])
-
-    useEffect(() => {
         setImageUpload(undefined)
     }, [activeDishId])
+
 
     const changeDish = (name: string, value:number | string):void => {  
         const newEditDish = {...editSingleDish!, [name]: value}
