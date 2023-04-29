@@ -46,8 +46,8 @@
     &-img-cont {
         width: 81px;
         height: 81px;
-        border-radius: 100%;
-        background-image: url('../../public/images/dish-list.png');
+        // border-radius: 100%;
+        // background-image: url('../../public/images/dish-list.png');
         background-repeat: no-repeat;
         background-position: center;
         @include FlexCenter();
@@ -108,9 +108,9 @@
 .edit-image-cont {
     position: relative;
 
-    .edit-picture-dish {
-        position: absolute;
-            top: -25px;
-            left: 15px;
-    }
+    // .edit-picture-dish {
+    //     position: absolute;
+    //         top: -25px;
+    //         left: 15px;
+    // }
 }

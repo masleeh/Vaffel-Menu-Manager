@@ -67,10 +67,10 @@
         grid-row-start: 1;
         grid-row-end: 5;
         grid-column: 3;
-        margin-left: 10px;
+        margin-left: 0px;
         width: 200px;
         height: 148px;
-        background-image: url('../../public/images/dish-back.png');
+        // background-image: url('../../../../public/images/dish-back.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -181,7 +181,7 @@
     &-file-delete {
         width: 10px;
         height: 10px;
-        background: url('../../public/images/x.png') no-repeat center;
+        background: url('../../../../public/images/x.png') no-repeat center;
         cursor: pointer;
         margin-left: 5px;
     }
